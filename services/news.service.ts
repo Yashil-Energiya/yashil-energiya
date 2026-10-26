@@ -23,16 +23,24 @@ const CARD_FIELDS = `
   "cover": cover${IMAGE}
 `;
 
-const CARD_LOCALIZED = `title, excerpt, ${richText("description")}`;
+const CARD_LOCALIZED = `title, excerpt`;
+const BODY = richText("description");
 
 export const NewsService = {
-  getAllNews: async (first?: number, skip = 0, locale = "en") => {
+  // Lists need only the card; the full body is heavy (~3 KB per item), so it
+  // is loaded only for the assistant's knowledge base.
+  getAllNews: async (
+    first?: number,
+    skip = 0,
+    locale = "en",
+    withBody = false,
+  ) => {
     const paginated = first !== undefined;
     const query = `{
       "news": *[${FILTER}] | order(date desc, _id asc) ${paginated ? "[$start...$end]" : ""} {
         ${CARD_FIELDS},
         "updatedAt": _updatedAt,
-        ${localized(`${CARD_LOCALIZED}, "seo": seo{ noIndex }`)},
+        ${localized(`${CARD_LOCALIZED}, ${withBody ? `${BODY},` : ""} "seo": seo{ noIndex }`)},
         ${languages()}
       },
       "newsConnection": { "aggregate": { "count": count(*[${FILTER}]) } }
@@ -50,7 +58,7 @@ export const NewsService = {
     const query = `*[${FILTER} && slug.current == $slug][0]{
       ${CARD_FIELDS},
       "updatedAt": _updatedAt,
-      ${localized(`${CARD_LOCALIZED}, ${SEO}`)},
+      ${localized(`${CARD_LOCALIZED}, ${BODY}, ${SEO}`)},
       ${languages()}
     }`;
 

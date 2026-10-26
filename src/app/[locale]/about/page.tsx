@@ -4,7 +4,6 @@ import { TheFeedback } from "@/components/FeedbackComponent/TheFeedback";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import {
-  BadgeCheck,
   Building2,
   Handshake,
   Leaf,
@@ -52,7 +51,6 @@ export default async function About({
   const projects = ["project1", "project2", "project3"] as const;
   const events = ["event1", "event2", "event3", "event4"] as const;
   const achievements = [
-    { key: "achievement1", icon: BadgeCheck },
     { key: "achievement2", icon: SunMedium },
     { key: "achievement3", icon: Building2 },
     { key: "achievement4", icon: Leaf },

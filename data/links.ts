@@ -67,7 +67,6 @@ export const menuLinks = [
     url: "#",
     title: "activity",
     subMenu: [
-      // { id: 5.1, url: "/branches", title: "branches" },
       { id: 5.2, url: "/plants", title: "plants" },
       { id: 5.3, url: "/installation-request", title: "installationRequest" },
       { id: 5.4, url: "/vacancies", title: "vacancies" },

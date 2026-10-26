@@ -28,6 +28,7 @@ import type {
   Segment,
 } from "interface/solar-calculator.types";
 import s from "./SolarCalculator.module.scss";
+import { numberLocale } from "@/lib/number-locale";
 
 const MonthlyChart = dynamic(
   () => import("./MonthlyChart").then((m) => m.MonthlyChart),
@@ -50,11 +51,11 @@ export const SolarCalculator = () => {
   const locale = useLocale();
 
   const numberFmt = useMemo(
-    () => new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }),
+    () => new Intl.NumberFormat(numberLocale(locale), { maximumFractionDigits: 0 }),
     [locale],
   );
   const decimalFmt = useMemo(
-    () => new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }),
+    () => new Intl.NumberFormat(numberLocale(locale), { maximumFractionDigits: 1 }),
     [locale],
   );
 

@@ -16,6 +16,7 @@ import type {
   NameType,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
+import { numberLocale } from "@/lib/number-locale";
 
 type Datum = {
   year: string;
@@ -72,7 +73,7 @@ export const TheChart = ({
   yearLabel,
 }: TheChartProps) => {
   const locale = useLocale();
-  const numberFormatter = new Intl.NumberFormat(locale, {
+  const numberFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
   });
   const data: Datum[] = [

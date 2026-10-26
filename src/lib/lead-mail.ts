@@ -24,22 +24,6 @@ async function getAccessToken() {
   return tokenResponse.accessToken;
 }
 
-export async function verifyTurnstile(
-  token: string,
-  secret: string,
-): Promise<{ success: boolean; "error-codes"?: string[] }> {
-  const response = await fetch(
-    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ secret, response: token }),
-    },
-  );
-
-  return response.json();
-}
-
 // Sends the lead to the corporate mailbox via Microsoft Graph; false on a Graph error.
 export async function sendLeadMail({
   subject,
@@ -71,6 +55,7 @@ export async function sendLeadMail({
         "Content-Type": "application/json",
       },
       body: JSON.stringify(emailPayload),
+      signal: AbortSignal.timeout(15_000),
     },
   );
 

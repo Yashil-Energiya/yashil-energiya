@@ -13,6 +13,7 @@ import {
   parseTons,
 } from "@/lib/plant-metrics";
 import type { Locale } from "next-intl";
+import { numberLocale } from "@/lib/number-locale";
 
 type PlantsListProps = {
   plants: Plant[];
@@ -23,10 +24,10 @@ export const ThePlantsList = ({ plants, contentLocale }: PlantsListProps) => {
   const t = useTranslations("PlantCard");
   const locale = useLocale();
 
-  const integerFormat = new Intl.NumberFormat(locale, {
+  const integerFormat = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 0,
   });
-  const decimalFormat = new Intl.NumberFormat(locale, {
+  const decimalFormat = new Intl.NumberFormat(numberLocale(locale), {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });

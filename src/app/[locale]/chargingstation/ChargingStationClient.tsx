@@ -32,6 +32,7 @@ import { resolveRegionLabel } from "@/lib/region-labels";
 import type { ChSMapControls } from "@/components/MapComponent/TheChSMap";
 import type { EvCharge } from "services/operational-assets.service";
 import s from "./page.module.scss";
+import { numberLocale } from "@/lib/number-locale";
 
 const TheChSMap = dynamic(
   () => import("@/components/MapComponent/TheChSMap").then((m) => m.TheChSMap),
@@ -75,8 +76,8 @@ export function ChargingStationClient({
   const t = useTranslations("ChargingStationPage");
   const homeT = useTranslations("HomePage");
   const regionT = useTranslations("SolarPanelsPage");
-  const integerFormatter = new Intl.NumberFormat(locale);
-  const powerFormatter = new Intl.NumberFormat(locale, {
+  const integerFormatter = new Intl.NumberFormat(numberLocale(locale));
+  const powerFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
   });
 

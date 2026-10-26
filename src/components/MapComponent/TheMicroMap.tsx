@@ -9,6 +9,7 @@ import { escapeHtml } from "@/lib/html";
 import { resolveRegionLabel } from "@/lib/region-labels";
 import { useLocale, useTranslations } from "next-intl";
 import type { Mhp } from "services/operational-assets.service";
+import { numberLocale } from "@/lib/number-locale";
 
 type TheMicroMapProps = {
   plants: Mhp[];
@@ -48,7 +49,7 @@ export const TheMicroMap = ({ plants }: TheMicroMapProps) => {
   const locale = useLocale();
   const t = useTranslations("MicroGesPage");
   const regionT = useTranslations("SolarPanelsPage");
-  const numberFormatter = new Intl.NumberFormat(locale, {
+  const numberFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
   });
 

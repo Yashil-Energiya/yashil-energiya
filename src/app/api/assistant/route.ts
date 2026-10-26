@@ -5,6 +5,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { serverEnv } from "@/lib/server-env";
 import { buildKnowledgeBase } from "@/lib/assistant/knowledge";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 // Virtual assistant endpoint. Streams a Gemini answer grounded in the site's
 // knowledge base (see @/lib/assistant/knowledge). Same protections as the other
@@ -170,19 +171,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const captchaVerify = await fetch(
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          secret: serverEnv.turnstileAssistantSecretKey,
-          response: body.captchaToken,
-        }),
-      },
+    const captchaResult = await verifyTurnstile(
+      body.captchaToken,
+      serverEnv.turnstileAssistantSecretKey,
     );
-
-    const captchaResult = await captchaVerify.json();
     if (!captchaResult.success) {
       console.error(
         "[assistant] Turnstile verification failed:",

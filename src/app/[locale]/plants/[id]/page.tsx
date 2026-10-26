@@ -37,6 +37,7 @@ import {
   TreePine,
   Zap,
 } from "lucide-react";
+import { numberLocale } from "@/lib/number-locale";
 
 type Props = {
   params: Promise<{
@@ -99,10 +100,10 @@ export default async function Plant({ params }: Props) {
     coords.length === 2 &&
     coords.every((value) => typeof value === "number" && Number.isFinite(value));
 
-  const integerFormat = new Intl.NumberFormat(locale, {
+  const integerFormat = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 0,
   });
-  const decimalFormat = new Intl.NumberFormat(locale, {
+  const decimalFormat = new Intl.NumberFormat(numberLocale(locale), {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });

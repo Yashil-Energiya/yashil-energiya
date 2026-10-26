@@ -1,10 +1,11 @@
 "use client";
 
 import styles from "./TheAdvantages.module.scss";
-import { useFormatter, useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { TheMotionWrapper } from "../MotionWrapper/TheMotionWrapper";
 import { useEffect, useRef, useState } from "react";
 import { useLocaleMotionState } from "@/lib/locale-transition";
+import { numberLocale } from "@/lib/number-locale";
 
 export const TheAdvantages = () => {
   const t = useTranslations("TheAdvantages");
@@ -85,7 +86,7 @@ export const HTMLContent = ({
   duration,
   skipMotion,
 }: HTMLContentProps) => {
-  const format = useFormatter();
+  const formatter = new Intl.NumberFormat(numberLocale(useLocale()));
   const target = Number(total);
   const [value, setValue] = useState(skipMotion ? target : 0);
 
@@ -121,7 +122,7 @@ export const HTMLContent = ({
     <li className={styles.adv}>
       <p className={styles.advTitle}>{title}</p>
       <div className={styles.box}>
-        <p className={styles.numb}>{format.number(value)}+</p>
+        <p className={styles.numb}>{formatter.format(value)}+</p>
         {unit && <span className={styles.unit}>{unit}</span>}
       </div>
     </li>

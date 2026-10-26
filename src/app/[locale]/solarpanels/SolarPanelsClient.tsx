@@ -26,6 +26,7 @@ import { TheMotionWrapper } from "@/components/MotionWrapper/TheMotionWrapper";
 import { Link } from "@/i18n/navigation";
 import type { PlantStatus } from "services/plant-status.service";
 import s from "./page.module.scss";
+import { numberLocale } from "@/lib/number-locale";
 
 const TheChart = dynamic(
   () => import("@/components/ChartComponent/TheChart").then((m) => m.TheChart),
@@ -106,8 +107,8 @@ const staggerStyle = (index: number) =>
 export function SolarPanelsClient({ plantStatuses }: SolarPanelsClientProps) {
   const locale = useLocale();
   const t = useTranslations("SolarPanelsPage");
-  const integerFormatter = new Intl.NumberFormat(locale);
-  const decimalFormatter = new Intl.NumberFormat(locale, {
+  const integerFormatter = new Intl.NumberFormat(numberLocale(locale));
+  const decimalFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
   });
   const totalPvPlants = plantStatuses.reduce(

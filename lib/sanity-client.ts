@@ -4,6 +4,10 @@ const API_VERSION = "v2025-02-19";
 const DEFAULT_REVALIDATE = 300;
 // Longer GROQ queries go as POST; GET keeps URLs well under proxy limits.
 const MAX_GET_URL_LENGTH = 8000;
+// A hung Sanity call fails the render instead of holding it until the
+// platform timeout. Promise.race, not an AbortSignal: a signal opts the
+// request out of Next's per-render fetch dedupe.
+const QUERY_TIMEOUT_MS = 10_000;
 
 export type FetchDataOptions = {
   /**
@@ -58,15 +62,26 @@ export const fetchData = async <T>(
     getUrl.searchParams.set(`$${name}`, JSON.stringify(value));
   }
 
-  const response =
+  const request =
     getUrl.toString().length <= MAX_GET_URL_LENGTH
-      ? await fetch(getUrl, cacheInit)
-      : await fetch(url, {
+      ? fetch(getUrl, cacheInit)
+      : fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query, params }),
           ...cacheInit,
         });
+
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const response = await Promise.race([
+    request,
+    new Promise<never>((_, reject) => {
+      timer = setTimeout(
+        () => reject(new Error("Sanity query timed out")),
+        QUERY_TIMEOUT_MS,
+      );
+    }),
+  ]).finally(() => clearTimeout(timer));
 
   const payload = (await response.json().catch(() => null)) as {
     result?: T;

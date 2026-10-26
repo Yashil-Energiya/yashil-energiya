@@ -10,6 +10,7 @@ import { escapeHtml } from "@/lib/html";
 import { resolveRegionLabel } from "@/lib/region-labels";
 import { useLocale, useTranslations } from "next-intl";
 import type { EvCharge } from "services/operational-assets.service";
+import { numberLocale } from "@/lib/number-locale";
 
 export type ChSMapControls = {
   focusStation: (id: string) => void;
@@ -57,7 +58,7 @@ export const TheChSMap = memo(function TheChSMap({
   const locale = useLocale();
   const t = useTranslations("ChargingStationPage");
   const regionT = useTranslations("SolarPanelsPage");
-  const numberFormatter = new Intl.NumberFormat(locale, {
+  const numberFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
   });
 

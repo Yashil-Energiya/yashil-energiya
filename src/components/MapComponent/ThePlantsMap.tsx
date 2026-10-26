@@ -8,6 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { escapeHtml } from "@/lib/html";
 import { resolveRegionLabel } from "@/lib/region-labels";
 import type { PlantStatus } from "services/plant-status.service";
+import { numberLocale } from "@/lib/number-locale";
 
 type ThePlantsMapProps = {
   plants: PlantStatus[];
@@ -24,8 +25,8 @@ const isLatLng = (c: unknown): c is [number, number] =>
 export const ThePlantsMap = ({ plants }: ThePlantsMapProps) => {
   const locale = useLocale();
   const t = useTranslations("SolarPanelsPage");
-  const integerFormatter = new Intl.NumberFormat(locale);
-  const decimalFormatter = new Intl.NumberFormat(locale, {
+  const integerFormatter = new Intl.NumberFormat(numberLocale(locale));
+  const decimalFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
   });
 

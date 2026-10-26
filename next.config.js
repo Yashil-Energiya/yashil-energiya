@@ -173,6 +173,12 @@ const nextConfig = {
         destination: "/uz/vacancies",
         statusCode: 301,
       },
+      // The regional branches page was removed; the company has no branches.
+      {
+        source: "/:lang(en|ru|uz)/branches",
+        destination: "/:lang/contacts",
+        statusCode: 301,
+      },
       {
         source: "/:lang(en|ru|uz)/mhp",
         destination: "/:lang/microges",

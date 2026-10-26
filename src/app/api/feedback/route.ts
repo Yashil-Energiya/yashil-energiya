@@ -6,8 +6,9 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { serverEnv } from "@/lib/server-env";
 import { escapeHtml } from "@/lib/html";
-import { LEAD_MAX_LENGTH } from "@/lib/lead-limits";
-import { sendLeadMail, verifyTurnstile } from "@/lib/lead-mail";
+import { leadFieldsError } from "@/lib/lead-limits";
+import { sendLeadMail } from "@/lib/lead-mail";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 interface FeedbackData {
   firstName: string;
@@ -43,24 +44,17 @@ export async function POST(req: NextRequest) {
       : routing.defaultLocale;
 
     const { firstName, phone, email, message, captchaToken } = body;
-    if (!firstName || !phone || !email || !message || !captchaToken) {
+    const fieldsError = leadFieldsError(body, [
+      "firstName",
+      "phone",
+      "email",
+      "message",
+    ]);
+    if (fieldsError || typeof captchaToken !== "string" || !captchaToken) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: fieldsError ?? "Missing required fields" },
         { status: 400 },
       );
-    }
-    if (
-      firstName.length > LEAD_MAX_LENGTH.firstName ||
-      phone.length > LEAD_MAX_LENGTH.phone ||
-      email.length > LEAD_MAX_LENGTH.email ||
-      message.length > LEAD_MAX_LENGTH.message
-    ) {
-      return NextResponse.json({ error: "Input is too long" }, { status: 400 });
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
     const safeFirstName = escapeHtml(firstName.trim());

@@ -36,7 +36,6 @@ export type StaticSeoKey =
   | "chargingstationPublicOffer"
   | "installationRequest"
   | "plants"
-  | "branches"
   | "documents"
   | "calculator"
   | "contacts"
@@ -283,23 +282,6 @@ export const staticSeo: Record<StaticSeoKey, Record<SeoLocale, SeoCopy>> = {
         "Yashil Energiya quyosh fotoelektr stansiyalari: quvvat, manzil, ishlab chiqarish va ekologik samaradorlik ko'rsatkichlari.",
     },
   },
-  branches: {
-    en: {
-      title: "Regional Service Centers",
-      description:
-        "Regional service centers of Yashil Energiya across Uzbekistan with contacts and local support information.",
-    },
-    ru: {
-      title: "Региональные сервисные центры",
-      description:
-        "Региональные сервисные центры Yashil Energiya в Узбекистане: контакты и информация о поддержке.",
-    },
-    uz: {
-      title: "Hududiy servis markazlari",
-      description:
-        "Yashil Energiya hududiy servis markazlari: O'zbekiston bo'ylab kontaktlar va xizmat ko'rsatish ma'lumotlari.",
-    },
-  },
   documents: {
     en: {
       title: "Documents",
@@ -385,7 +367,6 @@ export const staticRoutes: Record<StaticSeoKey, string> = {
   chargingstationPublicOffer: "/chargingstation/public-offer",
   installationRequest: "/installation-request",
   plants: "/plants",
-  branches: "/branches",
   documents: "/documents",
   calculator: "/resources/calculator",
   contacts: "/contacts",

@@ -16,6 +16,7 @@ import type {
   NameType,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
+import { numberLocale } from "@/lib/number-locale";
 
 type MonthlyChartProps = {
   generation: number[];
@@ -56,7 +57,7 @@ export const MonthlyChart = ({
 }: MonthlyChartProps) => {
   const locale = useLocale();
   const t = useTranslations("CalculatorPage");
-  const formatter = new Intl.NumberFormat(locale, {
+  const formatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 0,
   });
 

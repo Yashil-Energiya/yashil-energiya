@@ -16,6 +16,7 @@ import type { Segment } from "interface/solar-calculator.types";
 import s from "./SolarCalculator.module.scss";
 import type { TurnstileInstance } from "@marsidev/react-turnstile";
 import { LEAD_MAX_LENGTH } from "@/lib/lead-limits";
+import { numberLocale } from "@/lib/number-locale";
 
 const Turnstile = dynamic(
   () => import("@marsidev/react-turnstile").then((mod) => mod.Turnstile),
@@ -194,7 +195,7 @@ export const CalculatorLeadModal = ({
     { label: t("leadForm.review.consumerType"), value: summary.segmentLabel },
     {
       label: t("leadForm.review.annualConsumption"),
-      value: `${new Intl.NumberFormat(locale).format(summary.annualConsumptionKwh)} ${t("units.kwh")}`,
+      value: `${new Intl.NumberFormat(numberLocale(locale)).format(summary.annualConsumptionKwh)} ${t("units.kwh")}`,
     },
     { label: t("leadForm.review.region"), value: summary.regionLabel },
     { label: t("leadForm.review.coverage"), value: `${summary.coveragePercent}%` },

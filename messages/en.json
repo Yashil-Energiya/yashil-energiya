@@ -19,7 +19,6 @@
     "articles": "Articles",
     "procurements": "Procurements",
     "activity": "Activity",
-    "branches": "Subsidiaries",
     "plants": "List of PVPP",
     "solarPanels": "PVPP",
     "microGes": "MHP",
@@ -111,10 +110,6 @@
       "title": "The construction and efficient use of micro hydro power plants in Uzbekistan.",
       "src": "about-micro-hydro.webp"
     },
-    "achievement1": {
-      "description": "Service centers in all regions of the Republic",
-      "src": "codicon:tools"
-    },
     "achievement2": {
       "description": "130,000 kW photovoltaic power plants are currently in operation",
       "src": "ph:solar-panel"
@@ -165,7 +160,8 @@
     "title": "News",
     "linkTitle": "All news",
     "lastNewsTitle": "Latest news",
-    "link": "Learn More",
+    "link": "Learn More"
+,
     "popularEyebrow": "Trending",
     "popularTitle": "Popular news",
     "ogCta": "Read news"
@@ -1147,29 +1143,6 @@
       "headEngineeringManagement": "Head of Engineering Management Department"
     }
   },
-  "BranchesPage": {
-    "title": "\"Yashil Energiya Servis\" LLC",
-    "headerTitle": "Regional service centers of JV \"Yashil Energiya\" LLC",
-    "regionTitle": "Regional Service Center",
-    "branchManager": "Head of the branch",
-    "phone": "Phone number",
-    "address": "Address",
-    "email": "E-mail",
-    "region1": "Andijan",
-    "region2": "Bukhara",
-    "region3": "Fergana",
-    "region4": "Jizzakh",
-    "region5": "Namangan",
-    "region6": "Navoi",
-    "region7": "Kashkadarya",
-    "region8": "Republic of Karakalpakstan",
-    "region9": "Samarkand",
-    "region10": "Syrdarya",
-    "region11": "Surkhandarya",
-    "region12": "Tashkent region",
-    "region13": "Tashkent",
-    "region14": "Khorazm"
-  },
   "DocumentsPage": {
     "title": "Documents",
     "direction1": "Renewable energy sources",
@@ -1340,7 +1313,8 @@
     "title": "Articles",
     "linkTitle": "All articles",
     "lastArticlesTitle": "Latest articles",
-    "link": "Read more",
+    "link": "Read more"
+,
     "ogCta": "Read article"
   },
   "NotFoundPage": {

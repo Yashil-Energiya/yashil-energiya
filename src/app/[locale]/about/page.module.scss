@@ -330,11 +330,16 @@
 
 .achievements {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(14px, 2vw, 24px);
 
   @media (max-width: $lg) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    // Three cards: the last one takes the full row instead of leaving a gap.
+    > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
   }
 
   @media (max-width: $sm) {

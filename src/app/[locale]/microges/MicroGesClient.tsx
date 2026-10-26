@@ -29,6 +29,7 @@ import { TheMotionWrapper } from "@/components/MotionWrapper/TheMotionWrapper";
 import { Link } from "@/i18n/navigation";
 import type { Mhp } from "services/operational-assets.service";
 import s from "./page.module.scss";
+import { numberLocale } from "@/lib/number-locale";
 
 const TheMicroMap = dynamic(
   () =>
@@ -124,8 +125,8 @@ export function MicroGesClient({ mhps }: MicroGesClientProps) {
   const locale = useLocale();
   const t = useTranslations("MicroGesPage");
   const homeT = useTranslations("HomePage");
-  const integerFormatter = new Intl.NumberFormat(locale);
-  const capacityFormatter = new Intl.NumberFormat(locale, {
+  const integerFormatter = new Intl.NumberFormat(numberLocale(locale));
+  const capacityFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
   });
 

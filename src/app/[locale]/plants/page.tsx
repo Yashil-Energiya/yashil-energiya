@@ -9,6 +9,7 @@ import { TheJsonLd } from "@/components/JsonLd/TheJsonLd";
 import { absoluteUrl, itemListJsonLd, localizedPath } from "@/lib/seo";
 import { summarizePlants } from "@/lib/plant-metrics";
 import type { Metadata } from "next";
+import { numberLocale } from "@/lib/number-locale";
 
 type PlantsPageProps = {
   searchParams?: Promise<{ page?: string }>;
@@ -71,10 +72,10 @@ export default async function Plants({
   }
 
   const summary = summarizePlants(plants);
-  const integerFormat = new Intl.NumberFormat(locale, {
+  const integerFormat = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 0,
   });
-  const decimalFormat = new Intl.NumberFormat(locale, {
+  const decimalFormat = new Intl.NumberFormat(numberLocale(locale), {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });

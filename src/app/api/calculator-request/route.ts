@@ -6,8 +6,9 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { serverEnv } from "@/lib/server-env";
 import { escapeHtml } from "@/lib/html";
-import { LEAD_MAX_LENGTH } from "@/lib/lead-limits";
-import { sendLeadMail, verifyTurnstile } from "@/lib/lead-mail";
+import { leadFieldsError } from "@/lib/lead-limits";
+import { sendLeadMail } from "@/lib/lead-mail";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 // Dedicated endpoint for solar-calculator lead requests.
 // Sends through the project's mail integration — Microsoft Graph
@@ -36,8 +37,6 @@ const ratelimit = new Ratelimit({
   limiter: Ratelimit.slidingWindow(5, "1 m"),
   prefix: "calculator-request",
 });
-
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: NextRequest) {
   try {
@@ -69,27 +68,22 @@ export async function POST(req: NextRequest) {
       recommendedKwp,
     } = body;
 
-    if (!firstName || !phone || !captchaToken) {
+    const fieldsError = leadFieldsError(body, ["firstName", "phone"]);
+    if (fieldsError || typeof captchaToken !== "string" || !captchaToken) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: fieldsError ?? "Missing required fields" },
         { status: 400 },
       );
     }
 
-    const trimmedEmail = typeof email === "string" ? email.trim() : "";
-    if (trimmedEmail && !emailRegex.test(trimmedEmail)) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-    }
-
     if (
-      firstName.length > LEAD_MAX_LENGTH.firstName ||
-      phone.length > LEAD_MAX_LENGTH.phone ||
-      trimmedEmail.length > LEAD_MAX_LENGTH.email ||
       (typeof consumerType === "string" && consumerType.length > 100) ||
       (typeof region === "string" && region.length > 150)
     ) {
       return NextResponse.json({ error: "Input is too long" }, { status: 400 });
     }
+
+    const trimmedEmail = email?.trim() ?? "";
 
     const captchaResult = await verifyTurnstile(
       captchaToken,

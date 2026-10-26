@@ -22,7 +22,8 @@ export interface Article {
   createdAt?: string;
   updatedAt?: string;
   seo?: SeoFields | null;
-  content: RichText;
+  /** Only on the article page and with `withBody`. */
+  content?: RichText;
   /** Languages this article is filled in. */
   languages?: string[];
 }
@@ -44,14 +45,16 @@ const FIELDS = `
   ${languages()}
 `;
 
-const LOCALIZED_FIELDS = `title, excerpt, ${richText("content")}`;
+const LOCALIZED_FIELDS = `title, excerpt`;
+const BODY = richText("content");
 
 export const ArticlesService = {
-  getAllArticles: async (locale: string) => {
+  // The full body is loaded only for the assistant's knowledge base.
+  getAllArticles: async (locale: string, withBody = false) => {
     // Oldest first — the order the Hygraph query returned (createdAt asc).
     const query = `*[${FILTER}] | order(publishedAt asc, _id asc){
       ${FIELDS},
-      ${localized(`${LOCALIZED_FIELDS}, "seo": seo{ noIndex }`)}
+      ${localized(`${LOCALIZED_FIELDS}, ${withBody ? `${BODY},` : ""} "seo": seo{ noIndex }`)}
     }`;
 
     return fetchData<Article[]>(query, { locale: cmsLocale(locale) }, { tags });
@@ -60,7 +63,7 @@ export const ArticlesService = {
   getOneArticle: async (slug: string, locale: string) => {
     const query = `*[${FILTER} && slug.current == $slug][0]{
       ${FIELDS},
-      ${localized(`${LOCALIZED_FIELDS}, ${SEO}`)}
+      ${localized(`${LOCALIZED_FIELDS}, ${BODY}, ${SEO}`)}
     }`;
 
     return fetchData<Article | null>(

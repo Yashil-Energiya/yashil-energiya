@@ -144,8 +144,11 @@ async function loadSourceImage(sourceUrl: URL) {
 
 export async function GET(request: NextRequest) {
   const source = request.nextUrl.searchParams.get("src");
-  const title = request.nextUrl.searchParams.get("title");
-  const cta = request.nextUrl.searchParams.get("cta") || "Read article";
+  // Every distinct URL is rendered anew, so cap the text a caller can make us
+  // draw. The site sends titles of at most 86 characters and short CTAs.
+  const title = request.nextUrl.searchParams.get("title")?.slice(0, 120);
+  const ctaParam = request.nextUrl.searchParams.get("cta");
+  const cta = (ctaParam || "Read article").slice(0, 24);
 
   if (!source) {
     return new NextResponse("Missing image source", { status: 400 });

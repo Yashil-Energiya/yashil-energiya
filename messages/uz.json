@@ -19,7 +19,6 @@
     "articles": "Maqolalar",
     "procurements": "Xaridlar",
     "activity": "Faoliyat",
-    "branches": "Hududiy filiallar",
     "plants": "QFESlar ro'yxati",
     "solarPanels": "QFES",
     "microGes": "Mikro GES",
@@ -111,10 +110,6 @@
       "title": "O'zbekiston hududida kichik quvvatli gidroelektr stansiyalarini barpo etish va ulardan samarali foydalanishni amalga oshirish.",
       "src": "about-micro-hydro.webp"
     },
-    "achievement1": {
-      "description": "Respublikaning barcha viloyatlarida servis markazlari mavjud",
-      "src": "codicon:tools"
-    },
     "achievement2": {
       "description": "Hozirda 130 000 kVt quvvatli quyosh fotoelektr stansiyalari ishlab turibdi",
       "src": "ph:solar-panel"
@@ -165,7 +160,8 @@
     "title": "Yangiliklar",
     "linkTitle": "Barcha yangiliklar",
     "lastNewsTitle": "So'nggi yangiliklar",
-    "link": "Batafsil",
+    "link": "Batafsil"
+,
     "popularEyebrow": "Trend",
     "popularTitle": "Ommabop yangiliklar",
     "ogCta": "O'qish"
@@ -1147,29 +1143,6 @@
       "headEngineeringManagement": "Muhandislik boshqaruvi departamenti rahbari"
     }
   },
-  "BranchesPage": {
-    "title": "Filiallar",
-    "headerTitle": "\"Yashil Energiya\" MChJ ning hududiy servis markazlari",
-    "regionTitle": "hududiy servis markazi",
-    "branchManager": "Filial rahbari",
-    "phone": "Telefon raqami",
-    "address": "Filial manzili",
-    "email": "Elektron pochta",
-    "region1": "Andijon",
-    "region2": "Buxoro",
-    "region3": "Farg'ona",
-    "region4": "Jizzax",
-    "region5": "Namangan",
-    "region6": "Navoiy",
-    "region7": "Qashqadaryo",
-    "region8": "Qoraqalpog'iston Respublikasi",
-    "region9": "Samarqand",
-    "region10": "Sirdaryo",
-    "region11": "Surxondaryo",
-    "region12": "Toshkent viloyati",
-    "region13": "Toshkent shahri",
-    "region14": "Xorazm"
-  },
   "DocumentsPage": {
     "title": "Hujjatlar",
     "direction1": "Qayta tiklanuvchi energiya manbalari",
@@ -1340,7 +1313,8 @@
     "title": "Maqolalar",
     "linkTitle": "Barcha maqolalar",
     "lastArticlesTitle": "So'nggi maqolalar",
-    "link": "Batafsil o'qish",
+    "link": "Batafsil o'qish"
+,
     "ogCta": "O'qish"
   },
   "NotFoundPage": {
