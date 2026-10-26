@@ -50,6 +50,9 @@ const securityHeaders = [
   },
 ];
 
+// CDN cache for statically rendered pages only. Next overwrites Cache-Control
+// on dynamic pages (news, plants, live status pages, record pages) with
+// "private, no-store", so listing them here would have no effect.
 const staticHtmlCacheHeaders = [
   {
     key: "Cache-Control",
@@ -116,7 +119,7 @@ const nextConfig = {
       },
       {
         source:
-          "/:lang(en|ru|uz)/:section(about|ceo|contacts|solarpanels|microges|chargingstation|installation-request|plants|documents|news|articles|procurements|vacancies)",
+          "/:lang(en|ru|uz)/:section(about|ceo|contacts|installation-request|documents|articles|procurements|vacancies)",
         headers: staticHtmlCacheHeaders,
       },
       {
@@ -129,11 +132,6 @@ const nextConfig = {
       },
       {
         source: "/:lang(en|ru|uz)/procurements/:sub(procurement1|procurement2)",
-        headers: staticHtmlCacheHeaders,
-      },
-      {
-        source:
-          "/:lang(en|ru|uz)/:section(news|articles|plants|vacancies)/:slug*",
         headers: staticHtmlCacheHeaders,
       },
       {

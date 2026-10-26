@@ -16,7 +16,6 @@ import {
 const now = new Date();
 
 export const dynamic = "force-dynamic";
-export const revalidate = 3600;
 
 function sitemapEntry(
   locale: SeoLocale,
