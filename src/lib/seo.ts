@@ -681,6 +681,8 @@ export function organizationJsonLd(locale: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    // Target of the `publisher` references in the WebSite/WebPage/Article data.
+    "@id": `${siteUrl}/#organization`,
     name: siteName,
     url: siteUrl,
     logo: absoluteUrl("/logo_2.png"),

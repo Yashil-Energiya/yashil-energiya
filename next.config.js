@@ -140,8 +140,9 @@ const nextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      // Not pdf/docx: tender documents get replaced under the same name.
       {
-        source: "/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico|mp4|pdf|docx)",
+        source: "/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico|mp4)",
         headers: [
           {
             key: "Cache-Control",
