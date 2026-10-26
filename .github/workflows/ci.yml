@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            studio/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      # next-env.d.ts and route types are generated, not committed.
+      - run: npx next typegen
+      - run: npm run typecheck
+      - run: npm test
+      - run: cd studio && npm ci && npm run typecheck
