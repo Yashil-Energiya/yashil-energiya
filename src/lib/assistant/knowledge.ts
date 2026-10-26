@@ -77,7 +77,7 @@ async function buildArticlesSection(locale: string): Promise<string> {
   try {
     const { data: articles } = await loadWithFallback(
       locale,
-      ArticlesService.getAllArticles,
+      (contentLocale) => ArticlesService.getAllArticles(contentLocale, true),
       (items) => items.length === 0,
     );
     if (!articles?.length) return "";
@@ -102,7 +102,8 @@ async function buildNewsSection(locale: string): Promise<string> {
   try {
     const { data } = await loadWithFallback(
       locale,
-      (contentLocale) => NewsService.getAllNews(NEWS_LIMIT, 0, contentLocale),
+      (contentLocale) =>
+        NewsService.getAllNews(NEWS_LIMIT, 0, contentLocale, true),
       (result) => result.news.length === 0,
     );
     const news = data?.news ?? [];
