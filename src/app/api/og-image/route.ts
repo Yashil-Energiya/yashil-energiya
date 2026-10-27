@@ -5,8 +5,10 @@ import sharp from "sharp";
 import TextToSVG from "text-to-svg";
 import { siteUrl } from "@/lib/seo";
 import { SANITY_CDN_HOSTNAME } from "@/lib/sanity-image";
+import { publicEnv } from "@/lib/public-env";
 
-const allowedImageHosts = new Set([SANITY_CDN_HOSTNAME]);
+// cdn.sanity.io serves every Sanity project; only this project's images pass.
+const sanityImagePathPrefix = `/images/${publicEnv.sanityProjectId}/${publicEnv.sanityDataset}/`;
 const siteHostname = new URL(siteUrl).hostname;
 const publicDirectory = path.join(process.cwd(), "public");
 const notoSansBoldPath = path.join(
@@ -165,7 +167,10 @@ export async function GET(request: NextRequest) {
   if (
     sourceUrl.protocol !== "https:" ||
     (sourceUrl.hostname !== siteHostname &&
-      !allowedImageHosts.has(sourceUrl.hostname))
+      !(
+        sourceUrl.hostname === SANITY_CDN_HOSTNAME &&
+        sourceUrl.pathname.startsWith(sanityImagePathPrefix)
+      ))
   ) {
     return new NextResponse("Unsupported image source", { status: 400 });
   }

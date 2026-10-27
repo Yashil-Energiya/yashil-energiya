@@ -6,6 +6,7 @@ import { Redis } from "@upstash/redis";
 import { serverEnv } from "@/lib/server-env";
 import { buildKnowledgeBase } from "@/lib/assistant/knowledge";
 import { verifyTurnstile } from "@/lib/turnstile";
+import { chatHistory, type ChatMessage } from "@/lib/assistant/chat-history";
 
 // Virtual assistant endpoint. Streams a Gemini answer grounded in the site's
 // knowledge base (see @/lib/assistant/knowledge). Same protections as the other
@@ -27,15 +28,6 @@ const LANGUAGE_NAMES: Record<SupportedLocale, string> = {
   ru: "Russian",
   uz: "Uzbek",
 };
-
-/** Keep the last N turns to bound token cost and latency. */
-const MAX_MESSAGES = 20;
-const MAX_MESSAGE_CHARS = 2000;
-
-interface ChatMessage {
-  role: "user" | "assistant";
-  content: string;
-}
 
 interface AssistantRequest {
   messages: ChatMessage[];
@@ -139,20 +131,12 @@ export async function POST(req: NextRequest) {
     }
 
     // Validate and normalise the conversation, keeping only the last N turns.
-    const messages = body.messages.slice(-MAX_MESSAGES);
-    for (const message of messages) {
-      if (
-        !message ||
-        (message.role !== "user" && message.role !== "assistant") ||
-        typeof message.content !== "string" ||
-        message.content.trim().length === 0 ||
-        message.content.length > MAX_MESSAGE_CHARS
-      ) {
-        return NextResponse.json(
-          { error: "Invalid message format" },
-          { status: 400 },
-        );
-      }
+    const messages = chatHistory(body.messages);
+    if (!messages) {
+      return NextResponse.json(
+        { error: "Invalid message format" },
+        { status: 400 },
+      );
     }
 
     if (messages[messages.length - 1].role !== "user") {
