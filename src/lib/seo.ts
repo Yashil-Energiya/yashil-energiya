@@ -28,8 +28,6 @@ export type StaticSeoKey =
   | "news"
   | "articles"
   | "procurements"
-  | "procurement1"
-  | "procurement2"
   | "solarpanels"
   | "microges"
   | "chargingstation"
@@ -144,40 +142,6 @@ export const staticSeo: Record<StaticSeoKey, Record<SeoLocale, SeoCopy>> = {
       title: "Xaridlar",
       description:
         "Yashil Energiya xarid e'lonlari, tenderlari va tijorat imkoniyatlari.",
-    },
-  },
-  procurement1: {
-    en: {
-      title: "Procurement Details",
-      description:
-        "Detailed procurement information and tender documentation from Yashil Energiya.",
-    },
-    ru: {
-      title: "Детали закупки",
-      description:
-        "Подробная информация о закупке и тендерная документация Yashil Energiya.",
-    },
-    uz: {
-      title: "Xarid tafsilotlari",
-      description:
-        "Yashil Energiya xaridlari bo'yicha batafsil ma'lumot va tender hujjatlari.",
-    },
-  },
-  procurement2: {
-    en: {
-      title: "Procurement Details",
-      description:
-        "Detailed procurement information and tender documentation from Yashil Energiya.",
-    },
-    ru: {
-      title: "Детали закупки",
-      description:
-        "Подробная информация о закупке и тендерная документация Yashil Energiya.",
-    },
-    uz: {
-      title: "Xarid tafsilotlari",
-      description:
-        "Yashil Energiya xaridlari bo'yicha batafsil ma'lumot va tender hujjatlari.",
     },
   },
   solarpanels: {
@@ -359,8 +323,6 @@ export const staticRoutes: Record<StaticSeoKey, string> = {
   news: "/news",
   articles: "/articles",
   procurements: "/procurements",
-  procurement1: "/procurements/procurement1",
-  procurement2: "/procurements/procurement2",
   solarpanels: "/solarpanels",
   microges: "/microges",
   chargingstation: "/chargingstation",

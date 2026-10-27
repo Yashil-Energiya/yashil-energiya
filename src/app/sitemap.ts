@@ -42,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const dynamicEntries = [];
 
   for (const locale of cmsLocales) {
-    const { news, articles, plants, vacancies } =
+    const { news, articles, plants, vacancies, procurements } =
       await getSafeSitemapContent(locale);
 
     // hreflang per entry: only the languages it is actually published in.
@@ -79,6 +79,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           sitemapEntry(
             locale,
             `/vacancies/${item.id}`,
+            cmsAlternateLocales(item.languages),
+          ),
+        ),
+        ...procurements.map((item) =>
+          sitemapEntry(
+            locale,
+            `/procurements/${item.slug}`,
             cmsAlternateLocales(item.languages),
           ),
         ),

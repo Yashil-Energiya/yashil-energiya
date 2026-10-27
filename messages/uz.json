@@ -1244,7 +1244,12 @@
     "colDocs": "Hujjatlar",
     "download": "Yuklab olish",
     "noAttachment": "—",
-    "breadcrumbAria": "Yo'l xaritasi"
+    "breadcrumbAria": "Yo'l xaritasi",
+    "status": {
+      "open": "Ochiq",
+      "closed": "Yopiq",
+      "completed": "Yakunlangan"
+    }
   },
   "Footer": {
     "legalNav": "Yuridik hujjatlar",

@@ -185,7 +185,7 @@ Studio будет доступна на `https://yashil-energiya.sanity.studio`.
 
 - URL: `https://yashil-energiya.uz/api/revalidate` (для проверки на preview — URL preview-деплоя)
 - Dataset: `production`; триггеры: create, update, delete; только опубликованные документы
-- Filter: `_type in ["article","news","plant","vacancy","manager","evCharge","mhp","plantStatus"]`
+- Filter: `_type in ["article","news","plant","vacancy","procurement","manager","evCharge","mhp","plantStatus"]`
 - Projection: `{ _type, _id, "slug": slug.current }`
 - Method: POST; Secret: значение `SANITY_REVALIDATE_SECRET`
 

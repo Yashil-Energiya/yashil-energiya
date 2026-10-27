@@ -3,6 +3,7 @@ import { manager } from "./documents/manager";
 import { evCharge, mhp, plantStatus } from "./documents/mapAssets";
 import { news } from "./documents/news";
 import { plant } from "./documents/plant";
+import { procurement } from "./documents/procurement";
 import { vacancy } from "./documents/vacancy";
 import { dataTable } from "./objects/dataTable";
 import { imageBlock } from "./objects/imageBlock";
@@ -16,6 +17,7 @@ export const schemaTypes = [
   article,
   plant,
   vacancy,
+  procurement,
   manager,
   plantStatus,
   evCharge,

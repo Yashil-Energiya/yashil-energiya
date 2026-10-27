@@ -6,6 +6,7 @@ const CONTENT_TYPES = [
   { type: "article", title: "Статьи" },
   { type: "plant", title: "СЭС" },
   { type: "vacancy", title: "Вакансии" },
+  { type: "procurement", title: "Закупки" },
   { type: "manager", title: "Руководство" },
 ];
 
