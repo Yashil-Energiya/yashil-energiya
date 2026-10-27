@@ -1,17 +1,22 @@
-"use client";
-
 import { TheFeedback } from "@/components/FeedbackComponent/TheFeedback";
 import { TheHero } from "@/components/HeroComponent/TheHero";
 import { TheReveal } from "@/components/ui/Reveal/TheReveal";
 import { Link } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 import s from "./page.module.scss";
-import { tenders } from "data/tenders";
+import { ProcurementService } from "services/procurements.service";
 
-export default function TendersPage() {
-  const t = useTranslations("TendersPage");
-  const locale = useLocale();
+export default async function TendersPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("TendersPage");
+  const procurements =
+    (await ProcurementService.getAllProcurements(locale)) ?? [];
 
   return (
     <>
@@ -22,36 +27,25 @@ export default function TendersPage() {
         </TheReveal>
 
         <TheReveal stagger className={s.grid} motionKey="procurements-grid">
-          {tenders.map((tender) => {
-            const name =
-              locale === "uz"
-                ? tender.projectNameUz
-                : locale === "en"
-                  ? tender.projectNameEn
-                  : tender.projectNameRu;
-            const description =
-              locale === "uz"
-                ? tender.projectDescriptionUz
-                : locale === "en"
-                  ? tender.projectDescriptionEn
-                  : tender.projectDescriptionRu;
-            const count =
-              locale === "uz"
-                ? tender.tendersUz?.length
-                : locale === "en"
-                  ? tender.tendersEn?.length
-                  : tender.tendersRu?.length;
+          {procurements.map((procurement) => {
+            const {
+              slug,
+              projectNumber,
+              title,
+              description,
+              tendersCount: count,
+            } = procurement;
 
             return (
               <Link
-                key={tender.id}
-                href={`/procurements/procurement${tender.id}`}
+                key={slug}
+                href={`/procurements/${slug}`}
                 className={s.card}
               >
                 <span className={s.badge}>
-                  {tender.projectNumber || t("generalLabel")}
+                  {projectNumber || t("generalLabel")}
                 </span>
-                <h2 className={s.cardTitle}>{name}</h2>
+                <h2 className={s.cardTitle}>{title}</h2>
                 {description && (
                   <p className={s.cardText}>{description}</p>
                 )}

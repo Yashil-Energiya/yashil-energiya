@@ -1,6 +1,7 @@
 import { ArticlesService } from "services/articles.service";
 import { NewsService } from "services/news.service";
 import { PlantService } from "services/plants.service";
+import { ProcurementService } from "services/procurements.service";
 import { VacancyService } from "services/vacancies.service";
 import {
   absoluteUrl,
@@ -17,6 +18,9 @@ export type SitemapContent = {
   articles: Awaited<ReturnType<typeof ArticlesService.getAllArticles>>;
   plants: Awaited<ReturnType<typeof PlantService.getAllPlants>>["plants"];
   vacancies: Awaited<ReturnType<typeof VacancyService.getAllVacancies>>;
+  procurements: Awaited<
+    ReturnType<typeof ProcurementService.getAllProcurements>
+  >;
 };
 
 export const cmsLocales: SeoLocale[] = [...cmsContentLocales];
@@ -45,12 +49,14 @@ export async function getSitemapContent(locale: SeoLocale) {
   const articles = await ArticlesService.getAllArticles(locale);
   const plantsData = await PlantService.getAllPlants(undefined, 0, locale);
   const vacancies = await VacancyService.getAllVacancies(locale);
+  const procurements = await ProcurementService.getAllProcurements(locale);
 
   return {
     news: newsData.news,
     articles,
     plants: plantsData.plants,
     vacancies,
+    procurements,
   };
 }
 
@@ -65,6 +71,7 @@ export async function getSafeSitemapContent(locale: SeoLocale) {
       articles: [],
       plants: [],
       vacancies: [],
+      procurements: [],
     };
   }
 }

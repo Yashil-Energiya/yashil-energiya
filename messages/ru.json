@@ -1244,7 +1244,12 @@
     "colDocs": "Документация",
     "download": "Скачать",
     "noAttachment": "—",
-    "breadcrumbAria": "Хлебные крошки"
+    "breadcrumbAria": "Хлебные крошки",
+    "status": {
+      "open": "Открыт",
+      "closed": "Закрыт",
+      "completed": "Завершен"
+    }
   },
   "Footer": {
     "legalNav": "Юридические документы",

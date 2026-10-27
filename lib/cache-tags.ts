@@ -10,6 +10,7 @@ export const CACHE_TAGS = {
   news: "sanity:news",
   plant: "sanity:plant",
   vacancy: "sanity:vacancy",
+  procurement: "sanity:procurement",
   manager: "sanity:manager",
   evCharge: "sanity:ev-charge",
   mhp: "sanity:mhp",

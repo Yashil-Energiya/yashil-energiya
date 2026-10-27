@@ -1244,7 +1244,12 @@
     "colDocs": "Documentation",
     "download": "Download",
     "noAttachment": "—",
-    "breadcrumbAria": "Breadcrumb"
+    "breadcrumbAria": "Breadcrumb",
+    "status": {
+      "open": "Open",
+      "closed": "Closed",
+      "completed": "Completed"
+    }
   },
   "Footer": {
     "legalNav": "Legal documents",
