@@ -33,7 +33,7 @@ const tender = defineArrayMember({
       title: "Статус",
       type: "string",
       description:
-        "«Открыт» на сайте сам сменится на «Закрыт» на следующий день после крайнего срока.",
+        "«Открыт» на сайте сам сменится на «Закрыт» на следующий день после крайнего срока. Документацию можно скачать только у открытых тендеров.",
       options: { list: STATUSES, layout: "radio", direction: "horizontal" },
       initialValue: "open",
       validation: (rule) => rule.required(),
