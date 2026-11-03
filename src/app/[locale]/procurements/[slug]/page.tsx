@@ -63,10 +63,16 @@ export default async function ProcurementPage({ params }: Props) {
   const currentName = [projectNumber, title].filter(Boolean).join(" · ");
   // Computed per request (the page is dynamic), so no cron or CMS write is needed.
   const today = tashkentToday();
-  const tenderRows = tenders.map((tender) => ({
-    ...tender,
-    status: effectiveStatus(tender.status, tender.deadline, today),
-  }));
+  const tenderRows = tenders.map((tender) => {
+    const status = effectiveStatus(tender.status, tender.deadline, today);
+    // Documents are only offered while proposals are accepted; dropped here so
+    // the file URL never reaches the HTML of a closed tender.
+    return {
+      ...tender,
+      status,
+      fileUrl: status === "open" ? tender.fileUrl : null,
+    };
+  });
 
   return (
     <>
