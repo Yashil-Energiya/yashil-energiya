@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { redirect } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { ProcurementService } from "services/procurements.service";
+import { effectiveStatus, tashkentToday } from "lib/tender-status";
 import { ProcurementBreadcrumbs } from "@/components/ProcurementsComponent/ProcurementBreadcrumbs";
 import { ProcurementSubNav } from "@/components/ProcurementsComponent/ProcurementSubNav";
 import { ContactPlaque } from "@/components/ProcurementsComponent/ContactPlaque";
@@ -60,6 +61,12 @@ export default async function ProcurementPage({ params }: Props) {
 
   const { projectNumber, title, eyebrow, notice, tenders } = procurement;
   const currentName = [projectNumber, title].filter(Boolean).join(" · ");
+  // Computed per request (the page is dynamic), so no cron or CMS write is needed.
+  const today = tashkentToday();
+  const tenderRows = tenders.map((tender) => ({
+    ...tender,
+    status: effectiveStatus(tender.status, tender.deadline, today),
+  }));
 
   return (
     <>
@@ -108,7 +115,7 @@ export default async function ProcurementPage({ params }: Props) {
               {t("tendersTitle")}
             </h2>
             <div className={s.accentLine} aria-hidden="true" />
-            <TendersList tenders={tenders} />
+            <TendersList tenders={tenderRows} />
           </section>
         </div>
       </div>

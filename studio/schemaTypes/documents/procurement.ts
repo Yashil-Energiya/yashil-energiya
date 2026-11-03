@@ -32,6 +32,8 @@ const tender = defineArrayMember({
       name: "status",
       title: "Статус",
       type: "string",
+      description:
+        "«Открыт» на сайте сам сменится на «Закрыт» на следующий день после крайнего срока.",
       options: { list: STATUSES, layout: "radio", direction: "horizontal" },
       initialValue: "open",
       validation: (rule) => rule.required(),
