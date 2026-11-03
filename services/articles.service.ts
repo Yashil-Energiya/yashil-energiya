@@ -51,8 +51,8 @@ const BODY = richText("content");
 export const ArticlesService = {
   // The full body is loaded only for the assistant's knowledge base.
   getAllArticles: async (locale: string, withBody = false) => {
-    // Oldest first — the order the Hygraph query returned (createdAt asc).
-    const query = `*[${FILTER}] | order(publishedAt asc, _id asc){
+    // Newest first; _createdAt breaks ties when publishedAt is equal or empty.
+    const query = `*[${FILTER}] | order(publishedAt desc, _createdAt desc, _id asc){
       ${FIELDS},
       ${localized(`${LOCALIZED_FIELDS}, ${withBody ? `${BODY},` : ""} "seo": seo{ noIndex }`)}
     }`;
