@@ -46,10 +46,12 @@ const genai = new GoogleGenAI({
   // Fail fast on transient Gemini overload (503). The SDK default is 5 retries
   // with exponential backoff (~30s). Worst case must stay under maxDuration or
   // Vercel kills the function with a 504 instead of returning our 503 notice:
-  // 1 attempt × 20s = 20s, well under the 60s budget. On overload the user gets
-  // the "try again" message immediately and can retry.
+  // 1 attempt × 40s = 40s, under the 60s budget and the client's 45s abort. On
+  // overload the user gets the "try again" message immediately and can retry.
+  // The SDK timeout also covers reading the streamed body, so it must fit the
+  // whole answer, not just the first token — 20s cut long answers mid-sentence.
   httpOptions: {
-    timeout: 20000,
+    timeout: 40000,
     retryOptions: {
       attempts: 1,
       initialDelay: 0.5,
