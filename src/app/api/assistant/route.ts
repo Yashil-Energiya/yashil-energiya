@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { clientIp } from "@/lib/client-ip";
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { serverEnv } from "@/lib/server-env";
@@ -190,6 +190,9 @@ export async function POST(req: NextRequest) {
           // governs length; prevents answers being cut off mid-sentence
           // (Cyrillic/Uzbek text is token-heavy).
           maxOutputTokens: 3072,
+          // Default thinking delays the first token 19–47s with the full KB,
+          // past the 20s client timeout (AbortError); MINIMAL answers in ~7–10s.
+          thinkingConfig: { thinkingLevel: ThinkingLevel.MINIMAL },
         },
       });
     } catch (error) {
