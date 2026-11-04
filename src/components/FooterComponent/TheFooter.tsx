@@ -2,6 +2,7 @@ import s from "./TheFooter.module.scss";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { socialLinks } from "data/links";
+import { LEGAL_NAME, PHONES, TAX_ID, phoneHref } from "data/company";
 import { getTranslations } from "next-intl/server";
 import { MapPin, Navigation, Phone, Mail } from "lucide-react";
 import { FooterBackToTop } from "./FooterBackToTop";
@@ -28,7 +29,6 @@ const activityLinks: NavLink[] = [
   { href: "/installation-request", labelKey: "installationRequest" },
 ];
 
-const PHONE = "+998 55-514-88-44";
 const EMAIL = "info@yashil-energiya.uz";
 
 export const TheFooter = async () => {
@@ -108,10 +108,14 @@ export const TheFooter = async () => {
           <div className={`${s.navCol} ${s.contactsCol}`}>
             <h2 className={s.colTitle}>{t("sections.contacts")}</h2>
             <address className={s.contacts}>
-              <a className={s.contactRow} href={`tel:${PHONE.replace(/[^\d+]/g, "")}`}>
-                <Phone size={16} aria-hidden="true" />
-                <span>{PHONE}</span>
-              </a>
+              {PHONES.map(({ key, number }) => (
+                <a className={s.contactRow} href={phoneHref(number)} key={key}>
+                  <Phone size={16} aria-hidden="true" />
+                  <span>
+                    {tc(key)}: {number}
+                  </span>
+                </a>
+              ))}
               <p className={s.contactRow}>
                 <MapPin size={16} aria-hidden="true" />
                 <span>{tc("address1")}</span>
@@ -135,7 +139,8 @@ export const TheFooter = async () => {
         <div className="container">
           <div className={s.legalInner}>
             <p className={s.copyright}>
-              © {year} JV “Yashil Energiya” LLC · {t("rights")}
+              © {year} {LEGAL_NAME} · {tc("taxId")} {TAX_ID} ·{" "}
+              {t("rights")}
             </p>
             <div className={s.legalActions}>
               <Link className={s.legalLink} href="/chargingstation/public-offer">

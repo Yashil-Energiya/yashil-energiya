@@ -2,6 +2,7 @@ import s from "./TheFooterMinimal.module.scss";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { socialLinks } from "data/links";
+import { LEGAL_NAME } from "data/company";
 import { getTranslations } from "next-intl/server";
 
 // Original (pre-redesign) footer, kept for the standalone landing pages
@@ -39,7 +40,9 @@ export const TheFooterMinimal = async () => {
         </div>
       </div>
       <div className={s.subFooter}>
-        <p className={s.text}>JV “Yashil Energiya” LLC All rights reserved</p>
+        <p className={s.text}>
+          © {LEGAL_NAME} · {t("rights")}
+        </p>
       </div>
     </footer>
   );

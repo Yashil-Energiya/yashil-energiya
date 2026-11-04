@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { toPlainText, type PortableTextBlock } from "@portabletext/react";
 import type { RichText } from "@/types/richtext";
 import { isSanityImageUrl, sanityImage } from "@/lib/sanity-image";
+import { LEGAL_NAME, TAX_ID } from "data/company";
 
 export const siteUrl = "https://yashil-energiya.uz";
 export const siteName = "Yashil Energiya";
@@ -646,11 +647,31 @@ export function organizationJsonLd(locale: string) {
     // Target of the `publisher` references in the WebSite/WebPage/Article data.
     "@id": `${siteUrl}/#organization`,
     name: siteName,
+    legalName: LEGAL_NAME,
+    taxID: TAX_ID,
+    duns: "319070289",
     url: siteUrl,
     logo: absoluteUrl("/logo_2.png"),
     description: copy.description,
     email: "info@yashil-energiya.uz",
     telephone: "+998555148844",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+998555148844",
+        contactType: "customer service",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+998555118844",
+        contactType: "reception",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+998908301000",
+        contactType: "technical support",
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Bodomzor str. 2B, Yunusabad district",

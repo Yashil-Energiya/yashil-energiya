@@ -211,7 +211,7 @@ const content = {
         "OKED: 42220",
         "QQS to‘lovchisi kodi: 326080214845",
         "info@yashil-energiya.uz",
-        "Tel: +998-55-514-88-44 (ofis)",
+        "Tel: +998-55-511-88-44 (ofis)",
         "Tel: +998-90-830-10-00 (qo‘llab-quvvatlash xizmati)"
       ]
     }

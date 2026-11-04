@@ -3,6 +3,7 @@ import { TheHero } from "@/components/HeroComponent/TheHero";
 import { TheForm } from "@/components/FormComponent/TheForm";
 import s from "./page.module.scss";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { PHONES, TAX_ID, phoneHref } from "data/company";
 
 const departments = [
   {
@@ -47,13 +48,26 @@ export default async function Contacts({
                 <div className={s.description}>{t("address")}:</div>
                 <div className={s.info}>{t("address1")}</div>
               </div>
-              <div>
-                <div className={s.description}>{t("phone")}:</div>
-                <div className={s.info}>+998 55-514-88-44</div>
-              </div>
+              {PHONES.map(({ key, number }) => (
+                <div key={key}>
+                  <div className={s.description}>{t(key)}:</div>
+                  <a className={s.info} href={phoneHref(number)}>
+                    {number}
+                  </a>
+                </div>
+              ))}
+              <p className={s.description}>{t("phoneHint")}</p>
               <div>
                 <div className={s.description}>{t("email")}:</div>
                 <div className={s.info}>info@yashil-energiya.uz</div>
+              </div>
+              <div>
+                <div className={s.description}>{t("legalName")}:</div>
+                <div className={s.info}>{t("legalNameValue")}</div>
+              </div>
+              <div>
+                <div className={s.description}>{t("taxId")}:</div>
+                <div className={s.info}>{TAX_ID}</div>
               </div>
             </div>
             <div className={s.frameBlock}>

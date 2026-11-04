@@ -765,8 +765,7 @@
       "title": "Want a charging station on your territory?",
       "text": "Host a station or become a partner in Uzbekistan's growing charging network. Let's talk about the options for your site.",
       "button": "Contact us",
-      "phoneLabel": "Call us",
-      "phone": "+998 55 514 88 44"
+      "phoneLabel": "Call us"
     },
     "mapLabel": "Total capacity",
     "mapLabelUnit": "kW",
@@ -805,7 +804,7 @@
               "Common connectors. GB/T and CCS2.",
               "Easy payment. Everything in the app: balance, QR code, session, final amount.",
               "Transparent tariffs. Published in the public offer and visible in the app before charging.",
-              "Support. +998 55 514 88 44, daily from 9:00 to 18:00.",
+              "Support. EV charging technical support: +998 90 830 10 00, daily from 9:00 to 18:00. Office reception: +998 55 511 88 44.",
               "For business. Host a station at your site: installation and servicing are at the company's expense."
             ]
           }
@@ -873,7 +872,7 @@
           {
             "type": "qa",
             "q": "What if there is a problem at a station?",
-            "a": "Call our support line: +998 55 514 88 44, daily from 9:00 to 18:00."
+            "a": "Call EV charging technical support: +998 90 830 10 00, daily from 9:00 to 18:00. Office reception: +998 55 511 88 44."
           },
           {
             "type": "qa",
@@ -951,6 +950,13 @@
     "landmark1": "UZGIDROMET",
     "email": "E-mail",
     "title1": "Our address",
+    "legalName": "Full legal name",
+    "taxId": "TIN",
+    "callCenter": "Customer call centre",
+    "office": "Office reception",
+    "chargingSupport": "EV charging technical support",
+    "phoneHint": "For questions and requests, call the call centre. The office reception will put you through to the right employee.",
+    "legalNameValue": "Joint Venture Limited Liability Company \"YASHIL ENERGIYA\"",
     "mapFrameTitle": "Yashil Energiya office location in Tashkent",
     "department1": "Financial Department",
     "department2": "Procurement Department",
@@ -1100,7 +1106,7 @@
           {
             "type": "qa",
             "q": "How else can I contact you besides the form?",
-            "a": "Call +998 55 514 88 44 or email info@yashil-energiya.uz during working hours, from 9:00 to 18:00."
+            "a": "Call the call centre at +998 55 514 88 44 (office reception: +998 55 511 88 44) or email info@yashil-energiya.uz during working hours, from 9:00 to 18:00."
           }
         ]
       }
