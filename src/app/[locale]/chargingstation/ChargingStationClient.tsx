@@ -33,6 +33,7 @@ import type { ChSMapControls } from "@/components/MapComponent/TheChSMap";
 import type { EvCharge } from "services/operational-assets.service";
 import s from "./page.module.scss";
 import { numberLocale } from "@/lib/number-locale";
+import { CHARGING_PHONES, phoneHref } from "data/company";
 
 const TheChSMap = dynamic(
   () => import("@/components/MapComponent/TheChSMap").then((m) => m.TheChSMap),
@@ -60,7 +61,6 @@ const chargingTypeSpecs = ["power", "time", "connector", "bestFor"] as const;
 
 
 const STATIONS_PER_PAGE = 6;
-const PHONE_HREF = "tel:+998555148844";
 
 const staggerStyle = (index: number) =>
   ({ "--item-index": index } as CSSProperties);
@@ -76,6 +76,7 @@ export function ChargingStationClient({
   const t = useTranslations("ChargingStationPage");
   const homeT = useTranslations("HomePage");
   const regionT = useTranslations("SolarPanelsPage");
+  const contactsT = useTranslations("ContactsPage");
   const integerFormatter = new Intl.NumberFormat(numberLocale(locale));
   const powerFormatter = new Intl.NumberFormat(numberLocale(locale), {
     maximumFractionDigits: 2,
@@ -434,10 +435,14 @@ export function ChargingStationClient({
                 <span>{t("cta.button")}</span>
                 <ChevronRight aria-hidden="true" />
               </Link>
-              <a className={s.ctaPhone} href={PHONE_HREF}>
-                <Phone aria-hidden="true" />
-                <span>{t("cta.phone")}</span>
-              </a>
+              {CHARGING_PHONES.map(({ key, number }) => (
+                <a className={s.ctaPhone} href={phoneHref(number)} key={key}>
+                  <Phone aria-hidden="true" />
+                  <span>
+                    {contactsT(key)}: {number}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
         </TheMotionWrapper>

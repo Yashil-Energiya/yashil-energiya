@@ -765,8 +765,7 @@
       "title": "Hududingizda quvvatlash stansiyasini joylashtirmoqchimisiz?",
       "text": "Stansiya joylashtiring yoki O'zbekistonning o'sib borayotgan quvvatlash tarmog'iga hamkor bo'ling. Ob'ektingiz uchun variantlarni muhokama qilamiz.",
       "button": "Biz bilan bog'lanish",
-      "phoneLabel": "Qo'ng'iroq qilish",
-      "phone": "+998 55 514 88 44"
+      "phoneLabel": "Qo'ng'iroq qilish"
     },
     "mapLabel": "Quvvat",
     "mapLabelUnit": "kVt",
@@ -805,7 +804,7 @@
               "Keng tarqalgan konnektorlar. GB/T va CCS2.",
               "Oson to'lov. Hammasi ilova orqali: balans, QR-kod, sessiya, yakuniy summa.",
               "Shaffof tariflar. Ommaviy ofertada e'lon qilingan va quvvatlashdan oldin ilovada ko'rinadi.",
-              "Qo'llab-quvvatlash. +998 55 514 88 44, har kuni 9:00 dan 18:00 gacha.",
+              "Qo'llab-quvvatlash. EQS texnik qo'llab-quvvatlash xizmati: +998 90 830 10 00, har kuni 9:00 dan 18:00 gacha. Ofis qabulxonasi: +998 55 511 88 44.",
               "Biznes uchun. O'z maydonchangizda stansiya joylashtiring: o'rnatish va xizmat ko'rsatish — kompaniya hisobidan."
             ]
           }
@@ -873,7 +872,7 @@
           {
             "type": "qa",
             "q": "Stansiyada muammo chiqsa nima qilaman?",
-            "a": "Qo'llab-quvvatlash xizmatiga qo'ng'iroq qiling: +998 55 514 88 44, har kuni 9:00 dan 18:00 gacha."
+            "a": "EQS texnik qo'llab-quvvatlash xizmatiga qo'ng'iroq qiling: +998 90 830 10 00, har kuni 9:00 dan 18:00 gacha. Ofis qabulxonasi: +998 55 511 88 44."
           },
           {
             "type": "qa",
@@ -951,6 +950,13 @@
     "landmark1": "UZGIDROMET",
     "email": "Elektron pochta",
     "title1": "Bizning manzil",
+    "legalName": "To'liq nomi",
+    "taxId": "STIR",
+    "callCenter": "Mijozlar uchun call-markaz",
+    "office": "Ofis qabulxonasi",
+    "chargingSupport": "EQS texnik qo'llab-quvvatlash xizmati",
+    "phoneHint": "Savol va murojaatlar bo'yicha call-markazga qo'ng'iroq qiling. Ofis qabulxonasi sizni kerakli xodim bilan bog'laydi.",
+    "legalNameValue": "\"YASHIL ENERGIYA\" mas'uliyati cheklangan jamiyat qo'shma korxona",
     "mapFrameTitle": "Yashil Energiya ofisining Toshkentdagi joylashuvi",
     "department1": "Moliyaviy rivojlanish bo'limi",
     "department2": "Xaridlar bo'limi",
@@ -1100,7 +1106,7 @@
           {
             "type": "qa",
             "q": "Formadan tashqari qanday bog'lanish mumkin?",
-            "a": "Ish vaqtida — 9:00 dan 18:00 gacha — +998 55 514 88 44 raqamiga qo'ng'iroq qiling yoki info@yashil-energiya.uz manziliga yozing."
+            "a": "Ish vaqtida — 9:00 dan 18:00 gacha — call-markazning +998 55 514 88 44 raqamiga (ofis qabulxonasi: +998 55 511 88 44) qo'ng'iroq qiling yoki info@yashil-energiya.uz manziliga yozing."
           }
         ]
       }
