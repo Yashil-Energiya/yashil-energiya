@@ -1625,7 +1625,12 @@
     "suggestions": [
       "Calculate a solar station",
       "Where are you located?",
-      "What services do you offer?"
+      "What services do you offer?",
+      "How do I apply for installation?",
+      "Where can I find charging stations?",
+      "Tell me about micro hydro plants",
+      "What projects have you completed?",
+      "Latest company news"
     ],
     "newChat": "New chat",
     "statusProcessing": "Processing your request…",

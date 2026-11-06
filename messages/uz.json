@@ -1625,7 +1625,12 @@
     "suggestions": [
       "Quyosh stansiyasini hisoblash",
       "Qayerda joylashgansiz?",
-      "Qanday xizmatlaringiz bor?"
+      "Qanday xizmatlaringiz bor?",
+      "O'rnatishga ariza qanday qoldiriladi?",
+      "EQS qayerda joylashgan?",
+      "Mikro GES haqida aytib bering",
+      "Qanday obyektlarni qurgansiz?",
+      "Kompaniyaning so'nggi yangiliklari"
     ],
     "newChat": "Yangi suhbat",
     "statusProcessing": "So'rovingiz qayta ishlanmoqda…",

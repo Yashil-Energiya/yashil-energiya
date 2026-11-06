@@ -39,6 +39,8 @@ const MUTE_KEY = "assistant:muted";
 
 /** Abort a request that never finishes; show a cancellation notice. */
 const REQUEST_TIMEOUT_MS = 45000;
+/** Fewer chips after an answer, so they don't push it out of view. */
+const MAX_FOLLOWUP_SUGGESTIONS = 4;
 /** After this long with no first token, switch the status text to "almost". */
 const STATUS_STAGE2_MS = 6000;
 /** Delay before the attention teaser pops in on first visit. */
@@ -176,7 +178,13 @@ export const TheAssistant = () => {
   const turnstileRef = useRef<TurnstileInstance | undefined>(undefined);
   const tokenResolveRef = useRef<((token: string | null) => void) | null>(null);
 
-  const suggestions = t.raw("suggestions") as string[];
+  const allSuggestions = t.raw("suggestions") as string[];
+  const suggestions =
+    messages.length === 0
+      ? allSuggestions
+      : allSuggestions
+          .filter((s) => !messages.some((m) => m.content === s))
+          .slice(0, MAX_FOLLOWUP_SUGGESTIONS);
 
   function notifySound(kind: "notify" | "soft") {
     if (!mutedRef.current) playChime(kind);
@@ -557,21 +565,6 @@ export const TheAssistant = () => {
             {t("greeting")}
           </div>
 
-          {messages.length === 0 && (
-            <div className={styles.suggestions}>
-              {suggestions.map((suggestion) => (
-                <button
-                  key={suggestion}
-                  type="button"
-                  className={styles.suggestion}
-                  onClick={() => sendMessage(suggestion)}
-                >
-                  {suggestion}
-                </button>
-              ))}
-            </div>
-          )}
-
           {messages.map((message, index) => (
             <div
               key={index}
@@ -585,6 +578,21 @@ export const TheAssistant = () => {
                 : message.content}
             </div>
           ))}
+
+          {!isStreaming && !notice && (
+            <div className={cn(styles.suggestions, styles.bubbleEnter)}>
+              {suggestions.map((suggestion) => (
+                <button
+                  key={suggestion}
+                  type="button"
+                  className={styles.suggestion}
+                  onClick={() => sendMessage(suggestion)}
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          )}
 
           {waitingForFirstToken && (
             <div
