@@ -72,6 +72,15 @@ $fab-size: 60px;
   pointer-events: auto;
 }
 
+// The panel is full-screen on phones: keep the page behind it from scrolling.
+@media (max-width: $sm) {
+  // Not on body too: that collapses the document and resets the scroll position.
+  :global(html):has(.panelOpen) {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -135,6 +144,7 @@ $fab-size: 60px;
   gap: 10px;
   padding: 16px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   background-color: $mint-bg;
 }
 
