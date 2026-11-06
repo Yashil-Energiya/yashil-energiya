@@ -18,7 +18,7 @@
     "@sanity/table": "^3.1.20",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "sanity": "^6.16.0",
+    "sanity": "^6.21.0",
     "styled-components": "^6.6.0"
   },
   "devDependencies": {
