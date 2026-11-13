@@ -20,7 +20,6 @@ const content = {
     "toc": "Mundarija",
     "archive": "Tahrirlar arxivi",
     "archiveEntries": [
-      "1.2-versiya, 21.09.2026",
       "1.1-versiya, 29.06.2026",
       "1.0-versiya, 15.05.2024"
     ],
@@ -71,7 +70,7 @@ const content = {
         "3.1. Xizmatlarning aniq qiymati har bir zaryadlash stansiyasi uchun alohida hisoblanadigan va Ijrochining mobil ilovasida ko‘rsatiladigan tariflarga muvofiq belgilanadi.",
         "3.2. Elektr transport vositalarini zaryadlash bo‘yicha Xizmat qiymati haqiqatda iste’mol qilingan elektr energiyasi hajmi asosida hisoblanadi, kVt·soat (kilovatt-soat)da o‘lchanadi va Ijrochining mobil ilovasi interfeysida ko‘rsatiladi. Mazkur qiymat Ijrochining kompleks xizmati uchun qat’iy narx bo‘lib, u zaryadlash stansiyasining texnik ishlashini ta’minlash, servis va ekspluatatsiya xarajatlari, shuningdek Ijrochining tijorat daromadini o‘z ichiga oladi.",
         "3.3. Xizmat ko‘rsatishda iste’mol qilinadigan elektr energiyasi miqdori kVt·soat bo‘yicha tariflashda xizmat Qiymatini hisoblash uchun mo‘ljallangan bo‘lib, zaryadlash stansiyasida o‘rnatilgan elektr energiyasini hisobga olish asboblari orqali aniqlanadi. Ijrochi elektr energiyasi yetkazib beruvchisi hisoblanmaydi, balki zaryadlash bo‘yicha kompleks Xizmat ko‘rsatadi.",
-        "3.4. Zaryadlash sessiyasi tugaganidan so‘ng Mijozga avtoturargoh joyini bo‘shatish uchun 20 (yigirma) daqiqa bepul vaqt beriladi. Mazkur muddat tugaganidan keyin stansiyaning avtoturargoh joyida transport vositasi bekor turib qolgan har bir daqiqa uchun 500 (besh yuz) so‘m miqdorida haq undiriladi."
+        "3.4. Zaryadlash sessiyasi tugaganidan so‘ng Mijozga avtoturargoh joyini bo‘shatish uchun 20 (yigirma) daqiqa bepul vaqt beriladi. Mazkur muddat tugaganidan keyin doimiy tok stansiyasining (\"tezkor\" yoki \"ultra-tezkor\" stansiya) avtoturargoh joyida transport vositasi bekor turib qolgan har bir daqiqa uchun 500 (besh yuz) so‘m miqdorida haq undiriladi."
       ]
     },
     {
