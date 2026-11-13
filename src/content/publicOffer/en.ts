@@ -20,6 +20,7 @@ const content = {
     "toc": "Table of contents",
     "archive": "Version archive",
     "archiveEntries": [
+      "Version 1.2 dated 21.09.2026",
       "Version 1.1 dated 29.06.2026",
       "Version 1.0 dated 15.05.2024"
     ],
@@ -70,7 +71,7 @@ const content = {
         "3.1. The specific cost of the Services is established in accordance with tariffs calculated separately for each charging station and indicated in the Service Provider's mobile application.",
         "3.2. The cost of the Service for charging electric vehicles is calculated based on the amount of electricity actually consumed, measured in kWh (kilowatt-hours), and indicated in the interface of the Service Provider's mobile application. This cost is a fixed price for the Service Provider's comprehensive service, which includes ensuring the technical operation of the charging station, service and operating expenses, as well as the Service Provider's commercial income.",
         "3.3. The amount of electricity consumed in the provision of the Service is intended for calculating the Cost of the service when charging per kWh and is determined by electricity metering devices installed in the charging station. The Service Provider is not an electricity supplier, but provides a comprehensive charging Service.",
-        "3.4. After completion of the charging session, the Client is provided with 20 (twenty) minutes of free time to vacate the parking space. Upon expiry of this period, a fee of 500 (five hundred) sum is charged for each minute of vehicle idle time in the parking space of a direct current station (a \"fast\" or \"ultra-fast\" station)."
+        "3.4. After completion of the charging session, the Client is provided with 20 (twenty) minutes of free time to vacate the parking space. Upon expiry of this period, a fee of 500 (five hundred) sum is charged for each minute of vehicle idle time in the parking space of the charging station."
       ]
     },
     {
