@@ -780,11 +780,11 @@
         "body": [
           {
             "type": "p",
-            "text": "Siz faqat avtomobilingiz olgan elektr energiyasi uchun to'laysiz. Yakuniy summa avtomobilga berilgan kilovatt-soatlar miqdoriga va amaldagi tarifga bog'liq."
+            "text": "Siz avtomobilingiz olgan elektr energiyasi uchun to'laysiz: yakuniy summa quvvatlangan kilovatt-soatlar miqdoriga va stansiya tarifiga bog'liq. Tezkor (DC) stansiyalarda quvvatlash tugaganidan keyin avtoturargoh uchun haq ham olinadi — batafsil «Ko'p beriladigan savollar» bo'limida."
           },
           {
             "type": "p",
-            "text": "Amaldagi tariflar quvvatlashni boshlashdan oldin Yashil Energiya ilovasida ko'rsatiladi. Sessiyaning yakuniy summasi quvvatlash tugashi bilan ilovada ko'rinadi — yashirin to'lovlarsiz."
+            "text": "Amaldagi tariflar quvvatlashni boshlashdan oldin Yashil Energiya ilovasida ko'rsatiladi. Sessiyaning yakuniy summasi quvvatlash tugashi bilan ilovada ko'rinadi; agar avtoturargoh uchun haq hisoblangan bo'lsa, u shu summaga kiradi."
           },
           {
             "type": "p",
@@ -866,6 +866,16 @@
           },
           {
             "type": "qa",
+            "q": "Quvvatlashdan keyin avtoturargoh uchun haq olinadimi?",
+            "a": "Faqat tezkor (DC) stansiyalarda. Quvvatlash sessiyasi tugaganidan so'ng joyni bepul bo'shatish uchun sizda 20 daqiqa bor. Shundan keyin turib qolgan har bir daqiqa uchun 500 so'm hisoblanadi (ommaviy ofertaning 3.4-bandi). O'zgaruvchan tok (AC) stansiyalarida avtoturargoh uchun haq olinmaydi. 20 daqiqa quvvatlash sessiyasi tugagan paytdan boshlab hisoblanadi — sessiya holatini ilovada kuzatib boring."
+          },
+          {
+            "type": "qa",
+            "q": "Avtomobil hali quvvatlanayotgan bo'lsa-da, avtoturargoh uchun haq yechilgan bo'lsa nima qilaman?",
+            "a": "EQS texnik qo'llab-quvvatlash xizmatiga qo'ng'iroq qiling: +998 90 830 10 00, har kuni 9:00 dan 18:00 gacha. Sessiyani stansiya ma'lumotlari bo'yicha tekshiramiz. Texnik nosozlik tasdiqlansa, siz bilan kelishgan holda kompensatsiya beriladi — promokod, chegirma yoki balansga bonus ko'rinishida (ommaviy ofertaning 4.9-bandi)."
+          },
+          {
+            "type": "qa",
             "q": "Eng yaqin stansiyani qanday topaman?",
             "a": "Shu sahifadagi xaritada — unda ishlab turgan barcha stansiyalarning manzil va koordinatalari ko'rsatilgan. Ro'yxat yangi nuqtalar ochilishi bilan yangilanib boradi."
           },
@@ -914,7 +924,7 @@
     },
     "step7": {
       "title": "Quvvatlashni yakunlang",
-      "description": "Ilovada seansni to'xtating, kabelni ajrating va yakuniy to'lov ma'lumotlarini tekshiring."
+      "description": "Ilovada seansni to'xtating, kabelni ajrating va yakuniy to'lov ma'lumotlarini tekshiring. Tezkor (DC) stansiyalarda joyni 20 daqiqa ichida bo'shating — keyin avtoturargoh uchun haq hisoblanadi."
     }
   },
   "LinksPage": {
