@@ -780,7 +780,7 @@
         "body": [
           {
             "type": "p",
-            "text": "Siz avtomobilingiz olgan elektr energiyasi uchun to'laysiz: yakuniy summa quvvatlangan kilovatt-soatlar miqdoriga va stansiya tarifiga bog'liq. Tezkor (DC) stansiyalarda quvvatlash tugaganidan keyin avtoturargoh uchun haq ham olinadi — batafsil «Ko'p beriladigan savollar» bo'limida."
+            "text": "Siz avtomobilingiz olgan elektr energiyasi uchun to'laysiz: yakuniy summa quvvatlangan kilovatt-soatlar miqdoriga va stansiya tarifiga bog'liq. Quvvatlash tugaganidan keyin avtoturargoh uchun haq ham olinadi — batafsil «Ko'p beriladigan savollar» bo'limida."
           },
           {
             "type": "p",
@@ -867,7 +867,7 @@
           {
             "type": "qa",
             "q": "Quvvatlashdan keyin avtoturargoh uchun haq olinadimi?",
-            "a": "Faqat tezkor (DC) stansiyalarda. Quvvatlash sessiyasi tugaganidan so'ng joyni bepul bo'shatish uchun sizda 20 daqiqa bor. Shundan keyin turib qolgan har bir daqiqa uchun 500 so'm hisoblanadi (ommaviy ofertaning 3.4-bandi). O'zgaruvchan tok (AC) stansiyalarida avtoturargoh uchun haq olinmaydi. 20 daqiqa quvvatlash sessiyasi tugagan paytdan boshlab hisoblanadi — sessiya holatini ilovada kuzatib boring."
+            "a": "Ha, barcha stansiyalarda. Quvvatlash sessiyasi tugaganidan so'ng joyni bepul bo'shatish uchun sizda 20 daqiqa bor. Shundan keyin turib qolgan har bir daqiqa uchun 500 so'm hisoblanadi (ommaviy ofertaning 3.4-bandi). 20 daqiqa quvvatlash sessiyasi tugagan paytdan boshlab hisoblanadi — sessiya holatini ilovada kuzatib boring."
           },
           {
             "type": "qa",
@@ -924,7 +924,7 @@
     },
     "step7": {
       "title": "Quvvatlashni yakunlang",
-      "description": "Ilovada seansni to'xtating, kabelni ajrating va yakuniy to'lov ma'lumotlarini tekshiring. Tezkor (DC) stansiyalarda joyni 20 daqiqa ichida bo'shating — keyin avtoturargoh uchun haq hisoblanadi."
+      "description": "Ilovada seansni to'xtating, kabelni ajrating va yakuniy to'lov ma'lumotlarini tekshiring. Joyni 20 daqiqa ichida bo'shating — keyin avtoturargoh uchun haq hisoblanadi."
     }
   },
   "LinksPage": {
