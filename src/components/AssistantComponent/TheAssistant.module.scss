@@ -58,10 +58,11 @@ $fab-size: 60px;
     transform 250ms $ease-out;
 
   @media (max-width: $sm) {
+    top: var(--assistant-top, 0);
     right: 0;
-    bottom: 0;
+    bottom: auto;
     width: 100vw;
-    height: 100dvh;
+    height: var(--assistant-height, 100dvh);
     border-radius: 0;
   }
 }
@@ -70,15 +71,6 @@ $fab-size: 60px;
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
-}
-
-// The panel is full-screen on phones: keep the page behind it from scrolling.
-@media (max-width: $sm) {
-  // Not on body too: that collapses the document and resets the scroll position.
-  :global(html):has(.panelOpen) {
-    overflow: hidden;
-    overscroll-behavior: none;
-  }
 }
 
 .header {
@@ -257,6 +249,9 @@ $fab-size: 60px;
 .textarea {
   flex: 1;
   resize: none;
+  // Overrides the global textarea height, which took a third of the panel above the keyboard.
+  height: auto;
+  field-sizing: content;
   max-height: 120px;
   padding: 10px 12px;
   border: 1px solid $green-tint;
@@ -270,6 +265,11 @@ $fab-size: 60px;
 
   &:focus {
     border-color: $primaryColor;
+  }
+
+  // iOS zooms the page when focusing a field with text under 16px.
+  @media (pointer: coarse) {
+    font-size: 16px;
   }
 }
 

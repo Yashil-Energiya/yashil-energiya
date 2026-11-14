@@ -41,6 +41,8 @@ const MUTE_KEY = "assistant:muted";
 const REQUEST_TIMEOUT_MS = 45000;
 /** Fewer chips after an answer, so they don't push it out of view. */
 const MAX_FOLLOWUP_SUGGESTIONS = 4;
+/** Same width as $sm: below it the panel fills the screen. */
+const FULL_SCREEN_PANEL_QUERY = "(max-width: 640px)";
 /** After this long with no first token, switch the status text to "almost". */
 const STATUS_STAGE2_MS = 6000;
 /** Delay before the attention teaser pops in on first visit. */
@@ -163,6 +165,7 @@ export const TheAssistant = () => {
   const [teaser, setTeaser] = useState<Teaser | null>(null);
   const [muted, setMuted] = useState(false);
 
+  const panelRef = useRef<HTMLDivElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const statusTimerRef = useRef<number | undefined>(undefined);
@@ -331,6 +334,53 @@ export const TheAssistant = () => {
 
   useEffect(() => {
     if (isOpen) inputRef.current?.focus();
+  }, [isOpen]);
+
+  // Full-screen panel: iOS ignores overflow:hidden on the page and lays its
+  // keyboard over the layout, so pin the body and fit the panel to what's visible.
+  useEffect(() => {
+    const panel = panelRef.current;
+    const viewport = window.visualViewport;
+    if (
+      !isOpen ||
+      !panel ||
+      !viewport ||
+      !window.matchMedia(FULL_SCREEN_PANEL_QUERY).matches
+    ) {
+      return;
+    }
+
+    const { style: bodyStyle } = document.body;
+    const pageScrollY = window.scrollY;
+    bodyStyle.position = "fixed";
+    bodyStyle.top = `-${pageScrollY}px`;
+    bodyStyle.width = "100%";
+
+    const fitPanel = () => {
+      panel.style.setProperty("--assistant-top", `${viewport.offsetTop}px`);
+      panel.style.setProperty("--assistant-height", `${viewport.height}px`);
+    };
+    // The keyboard shrinks the message list: keep the latest message in view.
+    const handleResize = () => {
+      fitPanel();
+      const list = scrollRef.current;
+      if (list) list.scrollTop = list.scrollHeight;
+    };
+
+    fitPanel();
+    viewport.addEventListener("resize", handleResize);
+    viewport.addEventListener("scroll", fitPanel);
+
+    return () => {
+      viewport.removeEventListener("resize", handleResize);
+      viewport.removeEventListener("scroll", fitPanel);
+      panel.style.removeProperty("--assistant-top");
+      panel.style.removeProperty("--assistant-height");
+      bodyStyle.position = "";
+      bodyStyle.top = "";
+      bodyStyle.width = "";
+      window.scrollTo({ top: pageScrollY, behavior: "instant" });
+    };
   }, [isOpen]);
 
   /** Core send: append `text` to `base` history and stream the answer. */
@@ -513,6 +563,7 @@ export const TheAssistant = () => {
       </button>
 
       <div
+        ref={panelRef}
         className={cn(styles.panel, { [styles.panelOpen]: isOpen })}
         role="dialog"
         aria-label={t("title")}
