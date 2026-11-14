@@ -165,25 +165,10 @@ export function resolveLeadershipMembers(
     } satisfies LeadershipMember;
   });
 
-  const cmsEmails = new Set(cmsMembers.map((member) => normalizeEmail(member.email)));
-  const fallbackMembers = leadershipTeam
-    .filter((profile) => !cmsEmails.has(normalizeEmail(profile.email)))
-    .map(
-      (profile) =>
-        ({
-          id: profile.id,
-          name: profile.name,
-          jobTitle: getPosition(profile.positionKey),
-          email: profile.email,
-          image: profile.image,
-          queue: profile.queue,
-          isFeatured: Boolean(profile.isFeatured),
-        }) satisfies LeadershipMember,
-    );
-
-  const members = [...cmsMembers, ...fallbackMembers].sort(
-    (a, b) => a.queue - b.queue,
-  );
+  // Only published CMS managers are shown: the local profiles above enrich
+  // them by email but never add people, so unpublishing in Studio removes
+  // the card from the site.
+  const members = cmsMembers.sort((a, b) => a.queue - b.queue);
 
   if (members.some((member) => member.isFeatured)) {
     return members;

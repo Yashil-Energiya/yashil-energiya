@@ -11,7 +11,6 @@ import {
 } from "@/content/leadership";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ManagerService } from "services/managers.service";
-import type { Manager } from "services/managers.service";
 import s from "./page.module.scss";
 
 // Set to false to render CMS/local leadership photos again.
@@ -26,9 +25,9 @@ export default async function Ceo({
   setRequestLocale(locale);
   const t = await getTranslations("CeoPage");
   const aboutT = await getTranslations("AboutPage");
-  const managers = await getManagers(locale);
-  // Without CMS managers in this language (uz until translated), members come
-  // from src/content/leadership with positions from the dictionaries.
+  // A failed query throws, so the last good page stays cached instead of an
+  // empty one. Members are the published CMS managers only.
+  const { managers } = await ManagerService.getAllManagers(locale);
   const members = resolveLeadershipMembers(
     managers,
     (key) => t(`positions.${key}`),
@@ -122,18 +121,6 @@ export default async function Ceo({
       <TheFeedback />
     </>
   );
-}
-
-async function getManagers(locale: string): Promise<Manager[]> {
-  try {
-    const data = await ManagerService.getAllManagers(locale);
-
-    return data?.managers ?? [];
-  } catch (error) {
-    console.error("Failed to load leadership managers:", error);
-
-    return [];
-  }
 }
 
 function LeadershipPhoto({
