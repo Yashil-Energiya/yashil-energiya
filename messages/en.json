@@ -780,11 +780,11 @@
         "body": [
           {
             "type": "p",
-            "text": "You pay only for the electricity your car has received. The final amount depends on the number of kilowatt-hours charged and the current tariff."
+            "text": "You pay for the electricity your car has received: the final amount depends on the number of kilowatt-hours charged and the station's tariff. A parking fee also applies after charging is complete — see Frequently asked questions for details."
           },
           {
             "type": "p",
-            "text": "Current tariffs are published in the Yashil Energiya app before charging starts. The final amount for the session appears in the app as soon as charging is complete — with no hidden fees."
+            "text": "Current tariffs are published in the Yashil Energiya app before charging starts. The final amount for the session appears in the app as soon as charging is complete; if a parking fee was charged, it is included in that amount."
           },
           {
             "type": "p",
@@ -866,6 +866,16 @@
           },
           {
             "type": "qa",
+            "q": "Is there a parking fee after charging?",
+            "a": "Yes, at all stations. After the charging session ends, you have 20 minutes to vacate the space free of charge. After that, 500 sum is charged for each minute (clause 3.4 of the public offer). The 20 minutes are counted from the moment the charging session ends, so keep an eye on its status in the app."
+          },
+          {
+            "type": "qa",
+            "q": "What if a parking fee was charged while my car was still charging?",
+            "a": "Call EV charging technical support: +998 90 830 10 00, daily from 9:00 to 18:00. We will check the session against the station data. If a technical fault is confirmed, compensation is provided by agreement with you — as a promo code, a discount or bonus funds on your balance (clause 4.9 of the public offer)."
+          },
+          {
+            "type": "qa",
             "q": "How do I find the nearest station?",
             "a": "On the map on this page, which shows the addresses and coordinates of all operating stations. The list is updated as new locations open."
           },
@@ -914,7 +924,7 @@
     },
     "step7": {
       "title": "Finish charging",
-      "description": "Stop the session in the app, disconnect the cable and check the final payment details."
+      "description": "Stop the session in the app, disconnect the cable and check the final payment details. Vacate the space within 20 minutes — after that a parking fee applies."
     }
   },
   "LinksPage": {
