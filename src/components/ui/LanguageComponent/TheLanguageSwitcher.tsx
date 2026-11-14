@@ -8,9 +8,6 @@ import cn from "classnames";
 import { useTransition } from "react";
 import { markLocaleTransition } from "@/lib/locale-transition";
 
-const cmsPathPattern =
-  /^\/(news|articles|plants|vacancies|ceo)(\/|$)/;
-
 export const TheLanguageSwitcher = () => {
   const locale = useLocale();
   const pathname = usePathname();
@@ -21,12 +18,9 @@ export const TheLanguageSwitcher = () => {
   const handleLanguageChange = (newLocale: string) => {
     if (newLocale === locale) return;
 
-    const targetLocale =
-      newLocale === "uz" && cmsPathPattern.test(pathname) ? "en" : newLocale;
-
     startTransition(() => {
       markLocaleTransition();
-      router.replace({ pathname }, { locale: targetLocale, scroll: false });
+      router.replace({ pathname }, { locale: newLocale, scroll: false });
     });
   };
 
