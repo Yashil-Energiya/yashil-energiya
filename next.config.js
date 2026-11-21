@@ -36,7 +36,7 @@ const securityHeaders = [
       img-src 'self' data: blob: https://cdn.sanity.io https://*.tile.openstreetmap.org https://unpkg.com https://raw.githubusercontent.com https://cdnjs.cloudflare.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com;
       media-src 'self';
       font-src 'self' data:;
-      connect-src 'self' https://challenges.cloudflare.com https://*.upstash.io https://vitals.vercel-insights.com https://*.vercel-insights.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com;
+      connect-src 'self' https://challenges.cloudflare.com https://*.upstash.io https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com;
       frame-src https://challenges.cloudflare.com https://www.google.com https://maps.google.com https://www.youtube-nocookie.com https://www.youtube.com https://yandex.ru https://yandex.com https://*.yandex.ru https://*.yandex.net;
       worker-src 'self' blob:;
       object-src 'none';
@@ -69,6 +69,7 @@ const noIndexHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   compress: true,
   poweredByHeader: false,
   images: {
