@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "@sanity/locale-ru-kz": "^1.1.36",
-    "@sanity/table": "^3.1.20",
+    "@sanity/table": "^3.1.21",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "sanity": "^6.22.0",
+    "sanity": "^6.23.0",
     "styled-components": "^6.6.0"
   },
   "devDependencies": {
