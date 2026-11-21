@@ -193,7 +193,7 @@ export async function POST(req: NextRequest) {
           // (Cyrillic/Uzbek text is token-heavy).
           maxOutputTokens: 3072,
           // Default thinking delays the first token 19–47s with the full KB,
-          // past the 20s client timeout (AbortError); MINIMAL answers in ~7–10s.
+          // past the SDK timeout (AbortError); MINIMAL answers in ~7–10s.
           thinkingConfig: { thinkingLevel: ThinkingLevel.MINIMAL },
         },
       });
