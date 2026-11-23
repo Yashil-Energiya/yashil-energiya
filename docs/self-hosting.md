@@ -31,8 +31,9 @@ Sanity, Upstash, Microsoft Graph, Turnstile и Gemini — внешние сер�
   иначе посетитель подделает его и обойдёт лимит:
   `proxy_set_header CF-Connecting-IP $remote_addr;`
   Если включить проксирование Cloudflare («оранжевое облако»), эту строку убрать, а openresty пускать только с IP Cloudflare.
-- **www.** `www.yashil-energiya.uz` (и `http://`, и `https://`) → 301 на `https://yashil-energiya.uz$request_uri`.
-  Сертификат `*.yashil-energiya.uz` уже покрывает www.
+- **www.** openresty пропускает `www.yashil-energiya.uz` в Dokploy (сертификат `*.yashil-energiya.uz` покрывает www).
+  301 на основной домен делает Dokploy: приложение → Domains (`www`, HTTPS выключен) → Redirects:
+  regex `^https?://www.yashil-energiya.uz/(.*)` → `https://yashil-energiya.uz/${1}`, Permanent.
 - HTTP → HTTPS — 301 (настроено).
 
 ## Проверка после деплоя
