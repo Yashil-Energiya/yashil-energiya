@@ -1,9 +1,8 @@
 import type { NextRequest } from "next/server";
 
-// cf-connecting-ip is the real visitor behind Cloudflare. It is trusted only
-// because the origin takes traffic from Cloudflare alone (Tunnel or firewall,
-// see docs/self-hosting.md); an origin open to the internet would let clients
-// forge it and dodge the rate limit.
+// cf-connecting-ip is trusted only because the front proxy overwrites it with
+// the real visitor address (or Cloudflare sets it); see docs/self-hosting.md.
+// If the proxy passes it through, clients can forge it and dodge the rate limit.
 export function clientIp(req: NextRequest) {
   return (
     req.headers.get("cf-connecting-ip") ??
