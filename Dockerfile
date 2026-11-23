@@ -12,6 +12,12 @@ ARG NEXT_PUBLIC_SANITY_DATASET
 ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
 ARG NEXT_PUBLIC_TURNSTILE_ASSISTANT_SITE_KEY
 ARG NEXT_PUBLIC_GA_MEASUREMENT_ID
+# Server secrets read at module load by /api/assistant and lead-mail.ts;
+# next build evaluates those modules. Builder stage only, not in the final image.
+ARG GEMINI_API_KEY
+ARG MS_TENANT_ID
+ARG MS_CLIENT_ID
+ARG MS_CLIENT_SECRET
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
