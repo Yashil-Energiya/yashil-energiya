@@ -4,16 +4,22 @@ import { serverEnv } from "@/lib/server-env";
 
 // Shared by the lead forms (/api/feedback, /api/calculator-request).
 
-const msalClient = new ConfidentialClientApplication({
-  auth: {
-    clientId: serverEnv.msClientId,
-    authority: `https://login.microsoftonline.com/${serverEnv.msTenantId}`,
-    clientSecret: serverEnv.msClientSecret,
-  },
-});
+// Created on first use, not at module load: `next build` evaluates the route
+// modules and the build has no server secrets.
+let msalClient: ConfidentialClientApplication | undefined;
+function getMsalClient() {
+  msalClient ??= new ConfidentialClientApplication({
+    auth: {
+      clientId: serverEnv.msClientId,
+      authority: `https://login.microsoftonline.com/${serverEnv.msTenantId}`,
+      clientSecret: serverEnv.msClientSecret,
+    },
+  });
+  return msalClient;
+}
 
 async function getAccessToken() {
-  const tokenResponse = await msalClient.acquireTokenByClientCredential({
+  const tokenResponse = await getMsalClient().acquireTokenByClientCredential({
     scopes: ["https://graph.microsoft.com/.default"],
   });
 
