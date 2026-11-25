@@ -19,7 +19,7 @@
     "@google/genai": "^2.32.0",
     "@marsidev/react-turnstile": "^1.6.3",
     "@portabletext/react": "^8.0.1",
-    "@sanity/image-url": "^2.1.1",
+    "@sanity/image-url": "^2.2.0",
     "@sanity/webhook": "^4.0.4",
     "@upstash/ratelimit": "^2.2.1",
     "@upstash/redis": "^1.41.0",
@@ -28,12 +28,12 @@
     "leaflet.markercluster": "^1.5.3",
     "lucide-react": "^0.577.0",
     "next": "^16.4.6",
-    "next-intl": "^4.15.1",
+    "next-intl": "^4.15.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-leaflet": "^5.0.0",
     "react-toastify": "^10.0.5",
-    "recharts": "^3.10.1",
+    "recharts": "^3.11.0",
     "sass": "^1.108.2",
     "sharp": "^0.35.5",
     "text-to-svg": "^3.1.5",
@@ -51,6 +51,6 @@
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.4.6",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.2"
+    "typescript-eslint": "^8.73.0"
   }
 }
